@@ -35,8 +35,8 @@ find its eigenvalues for example.
 
 ### Conditionals
 if statements are in the form:
-`if [Bool] then [value] else [value]` \
-This statement evaluates to the type of the `[value]`.
+`if [Bool] then [type] else [type]` \
+This statement evaluates to the type of the `type`.
 
 ### Functions
 Functions are defined with:
@@ -67,7 +67,7 @@ arrays: `xs := [0, 2..=10]` or using the array comprehension syntax:
 
 Indexing arrays is easy with `xs[i]` for the element at index `i`. 
 
-The type of an array is `Array[type]` where the type is the type of the element in the array. 
+The type of an array is `Array{type}` where the type is the type of the element in the array. 
 If we have a function `foo` with the signature `foo :: type -> type`. 
 An array of `type`s cannot be used as input since it does not have the correct type. 
 ```
@@ -89,7 +89,17 @@ result := add (@xs, @ys)
 ```
 
 ### Actions
+(similar to monads I think)...
+
+### Units
 ...
+
+### Ideas
+#### ArrayLists
+ArrayLists act as lists, you can append to them, remove from them, etc. They will be implemented as blocks of memory, each an array, 
+where the last element in the array points to the next array. The type is `ArrayList{Int, type}` where the `Int` in the type 
+construction is the size of the contiguous blocks that contain the values minus the amount for the pointer. 
+`ArrayList{4, Bit] is 0110-> 0001-> 101__`
 
 ### Examples
 
