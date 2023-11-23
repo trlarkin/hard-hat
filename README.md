@@ -35,7 +35,7 @@ This statement evaluates to the type of the `[value]`.
 ### Functions
 Functions are defined with:
 ```
-foo (x?, y?) = [value using x and y as variables]
+foo (x?, y?) := [value using x and y as variables]
 ```
 They are not curried so when a function has two or more parameters you need to put the elements into a tuple.
 ```
@@ -50,7 +50,7 @@ result := plus1 4
 
 You can partially apply functions by replacing an argument with `?`.
 ```
-plus1 = add (1, ?)
+plus1 := add (1, ?)
 ```
 
 ### Arrays
@@ -90,21 +90,21 @@ result := add @xs @ys
 #### fizzbuzz
 Produce the fizzbuzz code for the numbers from 1 to 100. 
 ```
-fizzbuzzN N? = if N % 3 == 0 then "fizz" else ""
-            ++ if N % 5 == 0 then "buzz" else ""
+fizzbuzzN N? := if N % 3 == 0 then "fizz" else ""
+             ++ if N % 5 == 0 then "buzz" else ""
 
-result = fizzbuzzN &[1..=100]
+result := fizzbuzzN &[1..=100]
 ```
 
 #### combinations
 
 ```
-group3 (a?, b?, c?) = [a, b, c]
-xs = [0, 1]
-ys = [0, 1]
-zs = [0, 1]
+group3 (a?, b?, c?) := [a, b, c]
+xs := [0, 1]
+ys := [0, 1]
+zs := [0, 1]
 
-result = group3 (*xs, *ys, *za)
+result := group3 (*xs, *ys, *za)
 # result is [[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 1],
 #            [1, 0, 0], [1, 0, 1], [1, 1, 0], [1, 1, 1]]
 ```
