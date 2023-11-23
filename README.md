@@ -29,8 +29,8 @@ for a function of two arguments of the same type and outputs a different type: `
 
 I want to implement dependent types. Types can be made, these types are themselves governed by a 
 language that allows the construction of new types at compile time. 
-An example I hope to use is the `Matrix[r, c]` type, which takes in two Integers and then compile time checking 
-will be able to enforce the proper matric multiplication. If a matrix has the same `r` and `c` then we will be able to 
+An example I hope to use is the `Matrix{Int, Int, type}` type, which takes in two Integers and then compile time checking 
+will be able to enforce the proper matric multiplication. If a matrix has the same `Int`s then we will be able to 
 find its eigenvalues for example. 
 
 ### Conditionals
@@ -92,6 +92,12 @@ result := add (@xs, @ys)
 (similar to monads I think)...
 
 ### Units
+...
+
+### Undefined Varbales / Symbols
+...
+
+### Parallelization / Concurrency / Multithreading
 ...
 
 ### Ideas
