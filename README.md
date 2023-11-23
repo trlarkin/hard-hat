@@ -6,13 +6,16 @@ seen in other languages that I think would be nice.
 ## Implementation
 I hope to implement the parser in Haskell with Parsec. 
 
+I believe I will then convert to C applying appropriate optimizations. 
+
 ## Syntax
 
 ### Basics
 HardHat only has expressions that are evaluated to:
 - Values: functions or conditionals that 'return' something. 
 - Definitions: Setting values equal to something, whether a variable or a function. 
-Definitions are done using the `:=` operator. 
+Definitions are done using the `:=` operator. Considering adding the `<=` assignment
+operator denoting a variable is linear (can only be used once). 
 - Actions: Something that acts on a state (e.g. I/O). 
 
 ### Types
@@ -92,13 +95,40 @@ result := add (@xs, @ys)
 (similar to monads I think)...
 
 ### Units
-...
+Units can be added to Numbers (and probably other types) by using `'[unitName][number]*`. 
+The number is treated as. Input if the unit's input is not manually declared then the number will 
+be treated as an exponent.
+For example: 
+```
+mass := 4.5'kg  # 4.5 kg
+velocity := 30'm'/s  # 30 m/s
+energy := 9'J
+energy := 9'kg'm2'/s2
+```
+In this example, the units for energy can be written as either Jules or in Base SI units. 
+You can define conversions for units:
+```
+conversion: 's's = 's2
+conversion: 'J = 'kg'm2'/s2
+# this implies that 'J2 == 'kg'm2'/s2'kg'm2'/s2 == 'kg2'm4'/s4
+```
+By default, the left-hand side of the unit conversion is considered preferred. 
+The internal representation of the units should not matter, when used they will perform. 
+Adding different units will not throw an error, but it will not combine the results:
+```
+result = 1'kg + 4'm'/s + 6'm / 3's
+# result is 1'kg + 6'm'/s
+```
+Since you can take in a value that has terms with different units, they can be 
+used as objects in a way, where you just pull a certain term out. 
+
+!! I have not decided how the units perform with the type system !!
 
 ### Undefined Varbales / Symbols
 ...
 
 ### Parallelization / Concurrency / Multithreading
-...
+(I want to use the `functionName||threadCount (@xs, ...)` format)...
 
 ### Ideas
 #### ArrayLists
