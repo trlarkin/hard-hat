@@ -27,6 +27,12 @@ For a value of a type we can say: `x :: type` \
 for a function of one argument that takes in one argument of a type and outputs a different type: `foo :: type1 -> type2` \
 for a function of two arguments of the same type and outputs a different type: `foo :: type1, type1 -> type2`.
 
+I want to implement dependent types. Types can be made, these types are themselves governed by a 
+language that allows the construction of new types at compile time. 
+An example I hope to use is the `Matrix[r, c]` type, which takes in two Integers and then compile time checking 
+will be able to enforce the proper matric multiplication. If a matrix has the same `r` and `c` then we will be able to 
+find its eigenvalues for example. 
+
 ### Conditionals
 if statements are in the form:
 `if [Bool] then [value] else [value]` \
