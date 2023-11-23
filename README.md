@@ -75,16 +75,16 @@ xs := [1, 2, 3]
 ys := [10, 20, 30]
 # add :: Int, Int -> Int
 
-result := add 1 10
+result := add (1, 10)
 # result is 11
 
-result := add xs ys
+result := add (xs, ys)
 # This will throw a type error and not compile
 
-result := add &xs &ys
+result := add (&xs, &ys)
 # result is [11, 22, 33]
 
-result := add @xs @ys
+result := add (@xs, @ys)
 # result is [11, 21, 31, 12, 22, 32, 31, 32, 33]
 ```
 
