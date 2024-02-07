@@ -91,12 +91,12 @@ result := add (@xs, @ys)
 # result is [11, 21, 31, 12, 22, 32, 31, 32, 33]
 ```
 
-### Actions
+### Actions (like IO)
 (similar to monads I think)...
 
 ### Units
 Units can be added to Numbers (and probably other types) by using `'[unitName][number]*`. 
-The number is treated as. Input if the unit's input is not manually declared then the number will 
+The number is treated as input if the unit's input is not manually declared, then the number will 
 be treated as an exponent.
 For example: 
 ```
@@ -124,7 +124,15 @@ used as objects in a way, where you just pull a certain term out.
 
 !! I have not decided how the units perform with the type system !!
 
-### Undefined Varbales / Symbols
+### Side Effects
+Code that has side effects must be marked with the function annotation `;;`.
+```
+add (x?, y?) := x + y  # does not mutate
+
+add;; (x?, y?) := (x = x + y)  # the location in memory that held `x` now holds `x + y`.
+```
+
+### Undefined Varbales / TODO / Symbols
 ...
 
 ### Parallelization / Concurrency / Multithreading
